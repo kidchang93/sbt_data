@@ -1,4 +1,4 @@
-package kr.co.chunjae.controller;
+package kr.co.chunjae.controller.sbt00;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
