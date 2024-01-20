@@ -5,6 +5,6 @@
     <title>JSP 테스트</title>
 </head>
 <body>
-JSP 테스트 - 수정 -1
+<a href="/board/home">홈으로 가기</a>
 </body>
 </html>
