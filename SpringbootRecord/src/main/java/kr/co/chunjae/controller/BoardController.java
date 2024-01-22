@@ -18,10 +18,11 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/board")
-@RequiredArgsConstructor
+
 public class BoardController {
 
-   private final BoardService boardService;
+    @Autowired
+    private BoardService boardService;
 
 
 
@@ -31,7 +32,7 @@ public class BoardController {
         return "home";
     }
 
-    @GetMapping("list")
+    @GetMapping("/list")
     @ResponseBody
     public String boardList(){
 
