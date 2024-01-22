@@ -16,6 +16,11 @@ public class NoTransactionService {
     @Autowired
     private final TransactionMapper txMapper;
 
+    /**
+     * Mapper로 보내는 객체
+     * @param accountId
+     * @return
+     */
     public Account getAccountById(long accountId) {
         return txMapper.getAccountById(accountId);
     }
