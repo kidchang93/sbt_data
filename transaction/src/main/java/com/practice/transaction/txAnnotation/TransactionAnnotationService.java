@@ -24,7 +24,7 @@ public class TransactionAnnotationService {
         return txMapper.getAccountById(accountId);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = ClassNotFoundException.class)
     public Transfer transfer(long senderId, Long receiverId, long amount) throws ClassNotFoundException {
         Transfer transfer = new Transfer().builder()
                 .sender(send(senderId, amount))
@@ -43,8 +43,8 @@ public class TransactionAnnotationService {
         return sender;
     }
     private Account receive(Long receiverId, Long amount) throws ClassNotFoundException{
-        if(901L == receiverId) {
-            Account receiver = txMapper.getAccountByIdWrongSql(receiverId);
+        if(900L == receiverId) {
+            throw new NullPointerException();
         }
 
         if (901L == receiverId){
