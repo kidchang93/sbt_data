@@ -1,5 +1,6 @@
 package com.practice.transaction.noTransaction;
 
+import com.practice.transaction.Transfer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,10 @@ class NoTransactionServiceTest {
   @Test
   @DisplayName("이체 테스트 001 : 정상 이체")
   void testTransfer_001(){
-    service.transfer(SENDER_ID,RECEIVER_ID,AMOUNT);
+    Transfer transfer = service.transfer(SENDER_ID,RECEIVER_ID,AMOUNT);
+    // 10000원 가진 친구가 5000원을 이체 했을때
+    assertEquals(5000L,transfer.getSender().getBalance());
+    assertEquals(5000L,transfer.getReceiver().getBalance());
   }
 
 }
