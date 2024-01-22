@@ -1,6 +1,7 @@
-package com.practice.transaction.noTransaction;
+package com.practice.transaction.Transaction;
 
 import com.practice.transaction.Account;
+import com.practice.transaction.Transaction.TransactionManagerService;
 import com.practice.transaction.TransactionMapper;
 import com.practice.transaction.Transfer;
 import org.apache.ibatis.annotations.Mapper;
@@ -13,14 +14,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class NoTransactionServiceTest {
+class TransactionManagerServiceTest {
 
   private Long SENDER_ID = 1L;
   private Long RECEIVER_ID = 2L;
   private Long AMOUNT = 5000L;
 
   @Autowired
-  private NoTransactionService service;
+  private TransactionManagerService service;
 
   @Autowired
   private TransactionMapper mapper;
