@@ -1,8 +1,8 @@
 cloud:
   aws:
     credentials:
-      access-key: AKIAVPROYYU4W4KTKRTI
-      secret-key: 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
+      access-key: ${cloud.aws.credentials.access-key}
+      secret-key: ${cloud.aws.credentials.secret-key}
     region:
       static: ap-northeast-2
     stack:
@@ -10,7 +10,7 @@ cloud:
 
 application:
   bucket:
-    name: ckstorage01
+    name: ${application.bucket.name}
 
 
 spring:
