@@ -1,0 +1,25 @@
+cloud:
+  aws:
+    credentials:
+      access-key: AKIAVPROYYU46TKCTDXI
+      secret-key: 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
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+application:
+  bucket:
+    name: ckstorage01
+
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2MB
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
