@@ -23,7 +23,7 @@ public class StorageConfig {
 
 
     @Bean
-    public AmazonS3 generateS3Client(){
+    public AmazonS3 s3Client(){
         AWSCredentials credentials = new BasicAWSCredentials(accesskey,accessSecret);
         return AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))

@@ -23,7 +23,6 @@ public class StorageController {
 
     }
 
-    /** 22분 40초 */
     @GetMapping("/download/{fileName}")
     public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable("fileName") String fileName){
         byte[] data = service.downloadFile(fileName);
@@ -34,6 +33,11 @@ public class StorageController {
                 .header("Content-type" , "application/octet-steam")
                 .header("Content-disposition","attachment; filename = \"" + fileName + "\"")
                 .body(resource);
+
+    }
+    @DeleteMapping("/delete/{fileName}")
+    public ResponseEntity<String> deleteFile(String fileName){
+        return new ResponseEntity<>(service.deleteFile(fileName),HttpStatus.OK);
 
     }
 }
