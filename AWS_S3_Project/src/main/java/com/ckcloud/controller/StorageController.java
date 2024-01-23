@@ -36,7 +36,7 @@ public class StorageController {
 
     }
     @DeleteMapping("/delete/{fileName}")
-    public ResponseEntity<String> deleteFile(String fileName){
+    public ResponseEntity<String> deleteFile(@PathVariable String fileName){
         return new ResponseEntity<>(service.deleteFile(fileName),HttpStatus.OK);
 
     }
