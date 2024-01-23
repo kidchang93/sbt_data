@@ -1,0 +1,10 @@
+cloud:
+  aws:
+    credentials:
+      access-key: asd
+      secret-key: asd
+
+
+application:
+  bucket:
+    name: ckstorage01
