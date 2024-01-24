@@ -1,11 +1,10 @@
-package com.ckcloud.controller;
+package com.ckcloud.aws.controller;
 
-import com.ckcloud.service.StorageService;
+import com.ckcloud.aws.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

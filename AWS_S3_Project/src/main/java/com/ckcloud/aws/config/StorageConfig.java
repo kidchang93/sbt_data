@@ -1,4 +1,4 @@
-package com.ckcloud.config;
+package com.ckcloud.aws.config;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
