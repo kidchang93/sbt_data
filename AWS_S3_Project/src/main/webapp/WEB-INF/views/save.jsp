@@ -1,16 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 2024-01-24
-  Time: 오전 9:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
+<h1>이미지 등록 폼</h1>
 
+<form action="/file/upload" method="post" enctype="multipart/form-data">
+    <button type="button" value="file">버튼 </button>
+
+</form>
 </body>
 </html>

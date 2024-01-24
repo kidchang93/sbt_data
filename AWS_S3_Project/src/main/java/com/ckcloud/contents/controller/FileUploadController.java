@@ -1,0 +1,16 @@
+package com.ckcloud.contents.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@Controller
+@RequestMapping("/files")
+public class FileUploadController {
+
+    @GetMapping("/upload")
+    public String uploadForm(){
+        return "save";
+    }
+}

@@ -17,12 +17,19 @@ spring:
   servlet:
     multipart:
       enabled: true
-      file-size-threshold: 2MB
+      file-size-threshold: 0B
       max-file-size: 5MB
       max-request-size: 10MB
+      location: E:\upload\temp\bootS3
   profiles:
     include: s3
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
 
 server:
-  port: 8080
+  port: 8094
+
+
 
