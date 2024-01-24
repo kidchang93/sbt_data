@@ -20,6 +20,9 @@ spring:
       file-size-threshold: 2MB
       max-file-size: 5MB
       max-request-size: 10MB
+  profiles:
+    include: s3
 
 server:
   port: 8080
+
