@@ -17,6 +17,9 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
+configurations.all {
+    exclude group: 'commons-logging', module: 'commons-logging'
+}
 
 repositories {
     mavenCentral()
@@ -30,9 +33,9 @@ dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
     // mariadb
-    /*implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.3'
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'*/
+    implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.3'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
 
     // lombok

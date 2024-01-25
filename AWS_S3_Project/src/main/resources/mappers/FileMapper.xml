@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ckcloud.common.mapper.FileMapper">
+    <!--테이블 전체 컬럼-->
+    <sql id="fileColumns">
+        id
+        , content_id
+        , extension
+        , original_name
+        , saved_name
+        , thumb_name
+        , original_path
+        , saved_path
+        , thumb_path
+    </sql>
+
+    <insert id="saveAll" parameterType="list">
+        INSERT INTO tb_image (
+        <include refid="fileColumns" />
+        ) VALUES
+        <foreach item="file" collection="list" separator=",">
+            (
+            #{file.id}
+            , #{file.contentId}
+            , #{file.originalName}
+            , #{file.savedName}
+            , #{file.thumbName}
+            , #{file.originalPath}
+            , #{file.savedPath}
+            , #{file.thumbPath}
+            )
+        </foreach>
+    </insert>
+
+</mapper>

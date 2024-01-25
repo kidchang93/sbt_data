@@ -1,5 +1,6 @@
 package com.ckcloud.commons;
 
+import com.ckcloud.common.domain.FileRequest;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -8,18 +9,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 import static org.springframework.http.ResponseEntity.status;
 
@@ -28,7 +23,7 @@ public class ImageService {
 
     String originalPath = "E:\\upload\\temp\\bootS3";
 
-    public List<FileDTO> upload(MultipartFile[] uploadFiles){
+    /*public List<FileDTO> upload(MultipartFile[] uploadFiles){
         List<FileDTO> files = new ArrayList<>();
 
         Arrays.stream(uploadFiles).forEach(multipartFile -> {
@@ -45,9 +40,9 @@ public class ImageService {
         });
 
         return files;
-    }
+    }*/
 
-    public ResponseEntity<?> download(FileDTO dto) throws IOException{
+    public ResponseEntity<?> download(FileRequest dto) throws IOException{
 
         Path path = Paths.get(originalPath + dto.getOriginalName());
         String contentType = Files.probeContentType(path);
