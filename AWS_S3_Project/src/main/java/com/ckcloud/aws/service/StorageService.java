@@ -29,6 +29,9 @@ public class StorageService {
         File fileObj = convertMultiPartFileToFile(file);
         String fileName = System.currentTimeMillis()+"_"+file.getOriginalFilename();
         s3Client.putObject(new PutObjectRequest(bucketName,fileName,fileObj));
+        log.info("=== fileName ==="+fileName);
+        log.info("=== fileObj ==="+fileObj);
+        log.info("=== s3Client ===" + s3Client);
         fileObj.delete();
         return "File Uploaded = "+ fileName;
     }
@@ -54,6 +57,8 @@ public class StorageService {
         File convertedFile = new File(file.getOriginalFilename());
         try (FileOutputStream fos = new FileOutputStream(convertedFile)){
             fos.write(file.getBytes());
+            log.info("=== convertedFile ===" +convertedFile);
+            log.info("=== fos === " + fos);
         }catch(IOException e){
             log.error("Error converting multipartFile to file", e);
         }

@@ -1,5 +1,4 @@
-/*
-package com.ckcloud.aws.config;
+package com.ckcloud.common.config;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -11,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class StorageConfig {
+public class S3Config {
 
     @Value("${cloud.aws.credentials.access-key}")
     private String accesskey;
@@ -34,4 +33,3 @@ public class StorageConfig {
 
 
 }
-*/
