@@ -7,6 +7,7 @@ import com.ckcloud.common.service.ContentService;
 import com.ckcloud.common.service.FileService;
 import com.ckcloud.common.util.FileUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.message.Message;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/content")
 @RequiredArgsConstructor
+@Slf4j
 public class ContentController {
 
 
@@ -40,11 +42,21 @@ public class ContentController {
 
     // 신규 게시글 생성
     @PostMapping("/save")
-    public String saveContent(final ContentRequest params, Model model){
+    public String save(final ContentRequest params, Model model){
+        log.info("게시글 등록");
         int id = contentService.saveContent(params);
-        List<FileRequest> files = fileUtils.uploadFiles(params.getFiles());
-        fileService.saveFiles(id,files);
+        /*List<FileRequest> files = fileUtils.uploadFiles(params.getFiles());
+        fileService.saveFiles(id,files);*/
+        System.out.println(id);
         return "redirect:/content/list";
+    }
+
+    // 게시글 리스트 페이지
+    @GetMapping("/list")
+    public String openContentList(Model model){
+        List<ContentResponse> contents = contentService.findAllContent();
+        model.addAttribute("contentList",contents);
+        return "list";
     }
 
 }
