@@ -4,33 +4,57 @@
 <mapper namespace="com.ckcloud.common.mapper.ContentMapper">
 
     <!-- tb_post 테이블 전체 컬럼 -->
-    <sql id="postColumns">
+    <sql id="contentColumns">
         id
+        , user_id
+        , type
+        , charge
+        , view
         , title
-        , content
-        , writer
-        , view_cnt
-        , notice_yn
-        , delete_yn
-        , created_date
-        , modified_date
+        , keyword
+        , description
+        , regist_date
+        , update_flag
+        , update_date
+        , delete_flag
+        , delete_date
+        , approve_flag
+        , approve_user_id
     </sql>
 
 
-    <!-- 게시글 저장 -->
-    <insert id="save" parameterType="com.ckcloud.common.domain.ContentRequest" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO tb_post (
-        <include refid="postColumns" />
+    <!-- 게시글 저장  useGeneratedKeys="true" keyProperty="id"-->
+    <insert id="save" parameterType="com.ckcloud.common.domain.ContentRequest">
+        INSERT INTO tb_content (
+                               user_id
+                               , type
+                               , charge
+                               , view
+                               , title
+                               , keyword
+                               , description
+                               , regist_date
+                               , update_flag
+                               , update_date
+                               , delete_flag
+                               , delete_date
+                               , approve_flag
+                               , approve_user_id
         ) VALUES (
-        #{id}
+        #{userId}
+        , #{type}
+        , #{charge}
+        , #{view}
         , #{title}
-        , #{content}
-        , #{writer}
-        , 0
-        , #{noticeYn}
-        , 0
-        , NOW()
-        , NULL
+        , #{keyword}
+        , #{description}
+/*        , #{registDate}
+        , #{updateFlag}
+        , #{updateDate}
+        , #{deleteFlag}
+        , #{deleteDate}*/
+        , #{approveFlag}
+        , #{approveUserId}
         )
     </insert>
 
@@ -38,17 +62,17 @@
     <!-- 게시글 상세정보 조회 -->
     <select id="findById" parameterType="long" resultType="com.ckcloud.common.domain.ContentResponse">
         SELECT
-        <include refid="postColumns" />
+        <include refid="contentColumns" />
         FROM
-        tb_post
+        tb_content
         WHERE
-        id = #{value}
+        id = #{id}
     </select>
 
 
     <!-- 게시글 수정 -->
     <update id="update" parameterType="com.ckcloud.common.domain.ContentRequest">
-        UPDATE tb_post
+        UPDATE tb_content
         SET
             modified_date = NOW()
           , title = #{title}
@@ -62,7 +86,7 @@
 
     <!-- 게시글 삭제 -->
     <delete id="deleteById" parameterType="long">
-        UPDATE tb_post
+        UPDATE tb_content
         SET
             delete_yn = 1
         WHERE
@@ -73,9 +97,9 @@
     <!-- 게시글 리스트 조회 -->
     <select id="findAll" resultType="com.ckcloud.common.domain.ContentResponse">
         SELECT
-        <include refid="postColumns" />
+        <include refid="contentColumns" />
         FROM
-        tb_post
+        tb_content
         WHERE
         delete_yn = 0
         ORDER BY

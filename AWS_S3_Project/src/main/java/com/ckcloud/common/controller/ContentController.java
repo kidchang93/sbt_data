@@ -1,6 +1,7 @@
 package com.ckcloud.common.controller;
 
 import com.ckcloud.common.domain.ContentRequest;
+import com.ckcloud.common.domain.ContentResponse;
 import com.ckcloud.common.domain.FileRequest;
 import com.ckcloud.common.service.ContentService;
 import com.ckcloud.common.service.FileService;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -27,7 +29,12 @@ public class ContentController {
 
     // 게시글 작성 페이지
     @GetMapping("/write")
-    public String openContentWrite(Model model){
+    public String openContentWrite(@RequestParam(value = "id", required = false) Integer id , Model model){
+        if (id != null) {
+            ContentResponse content = contentService.findContentById(id);
+            model.addAttribute("content",content);
+        }
+
         return "write";
     }
 
@@ -37,7 +44,7 @@ public class ContentController {
         int id = contentService.saveContent(params);
         List<FileRequest> files = fileUtils.uploadFiles(params.getFiles());
         fileService.saveFiles(id,files);
-        return "results";
+        return "redirect:/content/list";
     }
 
 }

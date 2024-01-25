@@ -1,3 +1,4 @@
+/*
 package com.ckcloud.common.config;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -15,7 +16,9 @@ import org.springframework.context.annotation.PropertySource;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:/application.yml")
+*/
+/*@PropertySource("classpath:/application.yml")*//*
+
 public class DatabaseConfig {
 
     @Autowired
@@ -36,7 +39,7 @@ public class DatabaseConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource());
-        factoryBean.setMapperLocations(context.getResources("classpath:/mappers/**/*Mapper.xml"));
+        factoryBean.setMapperLocations(context.getResources("classpath:/mappers/*Mapper.xml"));
         factoryBean.setConfiguration(mybatisConfig());
         return factoryBean.getObject();
     }
@@ -53,3 +56,4 @@ public class DatabaseConfig {
     }
 
 }
+*/

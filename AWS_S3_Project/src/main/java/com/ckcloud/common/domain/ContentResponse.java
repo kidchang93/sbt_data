@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 @Getter
 public class ContentResponse {
     private int id;
-    private int user_id;
+    private int userId;
     private int type;
     private int charge;
     private int view;

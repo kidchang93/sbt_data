@@ -13,7 +13,7 @@ import java.util.List;
 public class ContentRequest {
 
     private int id;
-    private int user_id;
+    private int userId;
     private int type;
     private int charge;
     private int view;
