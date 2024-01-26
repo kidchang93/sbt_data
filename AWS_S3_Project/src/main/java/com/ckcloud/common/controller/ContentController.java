@@ -3,6 +3,7 @@ package com.ckcloud.common.controller;
 import com.ckcloud.common.domain.ContentRequest;
 import com.ckcloud.common.domain.ContentResponse;
 import com.ckcloud.common.domain.FileRequest;
+import com.ckcloud.common.domain.MessageDTO;
 import com.ckcloud.common.service.ContentService;
 import com.ckcloud.common.service.FileService;
 import com.ckcloud.common.util.FileUtils;
@@ -44,8 +45,8 @@ public class ContentController {
         int id = contentService.saveContent(params);
         /*List<FileRequest> files = fileUtils.uploadFiles(params.getFiles());
         fileService.saveFiles(id,files);*/
-        System.out.println(id);
-        return "redirect:/content/list";
+        MessageDTO message = new MessageDTO("게시글 생성이 완료되었습니다.", "list", RequestMethod.GET, null);
+        return showMessageAndRedirect(message,model);
     }
 
     // 게시글 리스트 페이지
@@ -75,18 +76,24 @@ public class ContentController {
 
     // 게시물 수정 값 입력
     @PostMapping("/update")
-    public String updateContentComplete(@ModelAttribute ContentResponse contentResponse){
+    public String updateContentComplete(@ModelAttribute ContentResponse contentResponse, Model model){
         log.info("업데이트 완료");
         contentService.updateContent(contentResponse);
-        log.info("ID~!!!##$%^^@^==!!!!" +contentResponse.getId());
-        return "redirect:/content/list";
+        MessageDTO message = new MessageDTO("게시글 수정이 완료되었습니다.", "list", RequestMethod.GET, null);
+        return showMessageAndRedirect(message, model);
     }
 
     @PostMapping("/delete")
-    public String deleteContent(@RequestParam("id") int id) {
+    public String deleteContent(@RequestParam("id") int id, Model model) {
         log.info("삭제 성공");
-        contentService.deleteContent(id);
-        return "redirect:/content/list";
+        MessageDTO message = new MessageDTO("게시글 삭제가 완료되었습니다.", "list", RequestMethod.GET, null);
+        return showMessageAndRedirect(message, model);
+
     }
 
+// 사용자에게 메시지를 전달하고, 페이지를 리다이렉트 한다.
+    private String showMessageAndRedirect(final MessageDTO params, Model model){
+        model.addAttribute("params",params);
+        return "/common/messageRedirect";
+    }
 }
