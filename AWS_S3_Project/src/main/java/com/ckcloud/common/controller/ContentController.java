@@ -2,9 +2,12 @@ package com.ckcloud.common.controller;
 
 import com.ckcloud.common.domain.*;
 import com.ckcloud.common.dto.SearchDTO;
+import com.ckcloud.common.paging.Pagination;
 import com.ckcloud.common.service.ContentService;
 import com.ckcloud.common.service.FileService;
 import com.ckcloud.common.util.FileUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.message.Message;
@@ -48,11 +51,36 @@ public class ContentController {
     }
 
     // 게시글 리스트 페이지
-    @GetMapping("/list")
-    public String openContentList(@ModelAttribute("params") final SearchDTO params, Model model){
+    /*@GetMapping("/list")
+    public String openContentList(@ModelAttribute("params") final SearchDTO params, Model model) {
         PagingResponse<ContentResponse> contents = contentService.findAllContent(params);
-        log.info("==== 제네릭 PagingResponse contents ===="+contents);
+        log.info("==== 원래 contents 값 ===="+contents);
         log.info("==== SEARCHDTO params 값 ===="+params);
+
+        model.addAttribute("contentList",contents);
+        return "list";
+    }*/
+    @GetMapping("/list")
+    public String openContentList(final SearchDTO params, Model model) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        PagingResponse<ContentResponse> contents = contentService.findAllContent(params);
+        log.info("==== 원래 Contents 값 ===="+contents);
+        /*String jsonContents = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(contents);
+        log.info("==== 제이슨 jsonContents 값 ===="+jsonContents);*/
+
+        Pagination pagination = contents.getPagination();
+        String jsonPagination = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(pagination);
+        model.addAttribute("getPagination",jsonPagination);
+
+        String jsonParams = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(params);
+        model.addAttribute("params",jsonParams);
+
+        log.info("==== 제이슨 jsonPagination 값 ===="+jsonPagination);
+
+
+        log.info("==== params 값 ===="+params);
+
         model.addAttribute("contentList",contents);
         return "list";
     }

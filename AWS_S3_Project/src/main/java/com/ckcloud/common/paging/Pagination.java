@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.Getter;
 
 @Getter
-@Data
+
 public class Pagination {
     private int totalRecordCount;     // 전체 데이터 수
     private int totalPageCount;       // 전체 페이지 수

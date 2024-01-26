@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,45 +29,51 @@
     </section>
 </div>
 <%--리스트--%>
-<%--<table class="tb tb_col">
+<table class="tb tb_col">
     <colgroup>
         <col style="width: 50px"/><col style="width:7.5%;"/><col style="width:auto;"/><col style="width:10%;"/><col style="width:15%;"/><col style="width:7.5%;"/>
     </colgroup>
+
     <c:choose>
         <c:when test="${empty contentList}">
             <tr>
                 <td colspan="6">등록된 글이 없습니다.</td>
             </tr>
         </c:when>
-        <c:otherwise>
-        <thead>
-            <tr>
-                <th scope="col">번호</th>
-                <th scope="col">제목</th>
-                <th scope="col">내용</th>
-                <th scope="col">등록일</th>
-                <th scope="col">키워드</th>
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach items="${contentList}" var="content" varStatus="status">
-                <tr>
-                    <td>${content.id}</td>
-                    <td><a href="/content/view?id=${content.id}">${content.title}</a></td>
-                    <td>${content.description}</td>
-                    <td>${content.registDate}</td>
-                    <td>${content.keyword}</td>
-                </tr>
-            </c:forEach>
-        </tbody>
-        </c:otherwise>
+            <c:otherwise>
+                <thead>
+                    <tr>
+                        <th scope="col">번호</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">내용</th>
+                        <th scope="col">등록일</th>
+                        <th scope="col">키워드</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                    <%--<input type="hidden" name="contentList" value="${contentList}">--%>
+                    <%--<c:forEach items="${contentList}" var="content">
+                    </c:forEach>--%>
+                        <div class="list">
+
+
+
+                                            <%-- 자바 스크립트 리스트 영역--%>
+
+                                    <%--<td>${content.id}</td>
+                                    <td><a href="/content/view?id=${content.id}">${content.title}</a></td>
+                                    <td>${content.description}</td>
+                                    <td>${content.registDate}</td>
+                                    <td>${content.keyword}</td>--%>
+
+
+                        </div>
+                    </tbody>
+            </c:otherwise>
     </c:choose>
-</table>--%>
+</table>
 
-    <%-- 자바 스크립트 리스트 영역--%>
-    <div class="list">
 
-    </div>
     <!--/* 페이지네이션 */-->
     <div class="paging">
 
@@ -84,29 +91,31 @@
 
 
 
+
     // 게시글 리스트 조회
     function findAllPost() {
 
         // 1. PagingResponse의 멤버인 List<T> 타입의 list를 의미
-        const list = `${contentList.list}`;
+        const list = ${contentList.list};
 
+        console.log(list);
         // 2. 리스트가 비어있는 경우, 행에 "검색 결과가 없다"는 메시지를 출력하고, 페이지 번호(페이지네이션) HTML을 제거(초기화)한 후 로직을 종료
-        if (!list.length){
+        if (list == null){
         document.getElementById('list').innerHTML ='<td colspan="6"><div className="no_data_msg">검색된 결과가 없습니다.</div></td>';
         drawPage();
         }
 
         // 3. PagingResponse의 멤버인 pagination을 의미
-        const pagination = `[${contentList.pagination}]`;
+        const pagination = ${getPagination};
         console.log(pagination);
 
         // 4. @ModelAttribute를 이용해서 뷰(HTML)로 전달한 SearchDto 타입의 객체인 params를 의미
-        const params = `[${params}]`;
+        const params = ${params};
         console.log(params);
 
         // 5. 리스트에 출력되는 게시글 번호를 처리하기 위해 사용되는 변수 (리스트에서 번호는 페이지 정보를 이용해서 계산해야 함)
         let num = pagination.totalRecordCount - ((params.page - 1) * params.recordSize);
-
+        console.log(num);
         // 6. 리스트 데이터 렌더링
         drawList(list, num);
 
@@ -127,20 +136,19 @@
          *  <td></td>
          */
 
-        list.forEach(content => {
-            html += `
-                        <tr>
-
-                            <td class="tl"><a href="/content/view?id=${content.id}">${content.title}</a></td>
-                            <td>${content.userId}</td>
-                            <td>${(content.registDate).format('YYYY-MM-DD HH:mm')}</td>
-                            <td>${content.view}</td>
-                        </tr>
-                    `;
-        })
+        list.forEach(row => {
+            html += `<tr>
+                        <td class="tl"><a href="/content/view?id=${row.id}">${row.title}</a></td>
+                        <td>${row.userId}</td>
+                        <td>${row.registDate}</td>
+                        <td>${row.view}</td>
+                    </tr>`
+        });
 
         // 3. id가 "list"인 요소를 찾아 HTML을 렌더링
-        document.getElementById('list').innerHTML = html;
+        // 3. 클래스가 "list"인 요소를 찾아 HTML을 렌더링
+        /*document.getElementById('list').innerHTML = html;*/
+        document.querySelector('.list').innerHTML = html;
     }
 
     // 페이지 HTML draw

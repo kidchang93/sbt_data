@@ -15,10 +15,10 @@ public class ContentServiceTest {
     void saveByForeach(){
         for (int i = 1; i <= 1000; i++) {
             ContentRequest params = new ContentRequest();
-            params.setTitle(i + "번 게시글 제목");
-            params.setDescription(i + "번 게시글 내용");
+            params.setTitle("번 게시글 제목");
+            params.setDescription("번 게시글 내용");
             params.setUserId(i);
-            params.setKeyword(i+"번째 키워드");
+            params.setKeyword("번째 키워드");
             params.setView(1);
             contentService.saveContent(params);
         }

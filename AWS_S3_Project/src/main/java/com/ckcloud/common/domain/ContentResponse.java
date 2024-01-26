@@ -3,9 +3,10 @@ package com.ckcloud.common.domain;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 @Getter
-@Setter
-@Data
+
 public class ContentResponse {
     private int id;
     private int userId;

@@ -2,11 +2,12 @@ package com.ckcloud.common.domain;
 
 import com.ckcloud.common.paging.Pagination;
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
 public class PagingResponse <T>{
 
     private List<T> list = new ArrayList<>();
