@@ -38,17 +38,12 @@
         )
     </insert>
     <!-- 게시글 리스트 조회 -->
-    <select id="findAll" resultType="com.ckcloud.common.domain.ContentResponse">
-        SELECT
-        <include refid="contentColumns" />
-        FROM
-        tb_content
-        ORDER BY
-        regist_date DESC
+    <select id="findAllContent" resultType="com.ckcloud.common.domain.ContentResponse">
+        select * from tb_content order by regist_date desc
     </select>
 
     <!-- 게시글 상세정보 조회 -->
-<!--    <select id="findById" parameterType="long" resultType="com.ckcloud.common.domain.ContentResponse">
+    <select id="findById" parameterType="long" resultType="com.ckcloud.common.domain.ContentResponse">
         SELECT
         <include refid="contentColumns" />
         FROM
@@ -58,7 +53,7 @@
     </select>
 
 
-    &lt;!&ndash; 게시글 수정 &ndash;&gt;
+    <!-- 게시글 수정 -->
     <update id="update" parameterType="com.ckcloud.common.domain.ContentRequest">
         UPDATE tb_content
         SET
@@ -72,14 +67,14 @@
     </update>
 
 
-    &lt;!&ndash; 게시글 삭제 &ndash;&gt;
+    <!-- 게시글 삭제 -->
     <delete id="deleteById" parameterType="long">
         UPDATE tb_content
         SET
             delete_yn = 1
         WHERE
             id = #{id}
-    </delete>-->
+    </delete>
 
 
 

@@ -29,29 +29,48 @@
 </div>
 <%--리스트--%>
 <table class="tb tb_col">
-<%--    <colgroup>
+    <colgroup>
         <col style="width: 50px"/><col style="width:7.5%;"/><col style="width:auto;"/><col style="width:10%;"/><col style="width:15%;"/><col style="width:7.5%;"/>
-    </colgroup>--%>
-    <thead>
-        <tr>
-
-            <th scope="col">제목</th>
-            <th scope="col">키워드</th>
-            <th scope="col">등록일</th>
-            <th scope="col">내용</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach items="${contentList}" var="content">
+    </colgroup>
+    <c:choose>
+        <c:when test="${empty contentList}">
             <tr>
-
-                <td>${contentList.title}</td>
-                <td>${contentList.keyword}</td>
-                <td>${contentList.registDate}</td>
-                <td>${contentList.description}</td>
+                <td colspan="6">등록된 글이 없습니다.</td>
             </tr>
-        </c:forEach>
-    </tbody>
+        </c:when>
+        <c:otherwise>
+        <thead>
+            <tr>
+                <th scope="col">번호</th>
+                <th scope="col">제목</th>
+                <th scope="col">키워드</th>
+                <th scope="col">등록일</th>
+                <th scope="col">내용</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${contentList}" var="content" varStatus="status">
+                <tr>
+                    <td>${content.id}</td>
+                    <td>${content.title}</td>
+                    <td>${content.keyword}</td>
+                    <td>${content.registDate}</td>
+                    <td>${content.description}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+        </c:otherwise>
+    </c:choose>
 </table>
+    <!--/* 페이지네이션 */-->
+    <div class="paging">
+        <a href="#" class="page_bt first">첫 페이지</a><a href="#" class="page_bt prev">이전 페이지 그룹</a>
+        <p><span class="on">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a href="#">7</a><a href="#">8</a><a href="#">9</a><a href="#">10</a></p>
+        <a href="#" class="page_bt next">다음 페이지 그룹</a><a href="#" class="page_bt last">마지막 페이지</a>
+    </div>
+    <!--/* 버튼 */-->
+    <p class="btn_set tr">
+        <a href="/post/write" class="btns btn_st3 btn_mid">글쓰기</a>
+    </p>
 </body>
 </html>

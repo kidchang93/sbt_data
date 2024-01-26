@@ -3,6 +3,7 @@ package com.ckcloud.common.mapper;
 import com.ckcloud.common.domain.ContentRequest;
 import com.ckcloud.common.domain.ContentResponse;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public interface ContentMapper {
      * 게시글 리스트 조회
      * @return - 게시글 리스트
      */
-    List<ContentResponse> findAll();
+    List<ContentResponse> findAllContent(Model model);
 
     /**
      * 게시글 수 카운팅

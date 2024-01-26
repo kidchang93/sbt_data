@@ -54,7 +54,7 @@ public class ContentController {
     // 게시글 리스트 페이지
     @GetMapping("/list")
     public String openContentList(Model model){
-        List<ContentResponse> contents = contentService.findAllContent();
+        List<ContentResponse> contents = contentService.findAllContent(model);
         model.addAttribute("contentList",contents);
         return "list";
     }
