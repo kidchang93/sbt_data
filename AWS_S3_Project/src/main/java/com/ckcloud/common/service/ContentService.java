@@ -2,6 +2,7 @@ package com.ckcloud.common.service;
 
 import com.ckcloud.common.domain.ContentRequest;
 import com.ckcloud.common.domain.ContentResponse;
+import com.ckcloud.common.dto.SearchDTO;
 import com.ckcloud.common.mapper.ContentMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -63,8 +64,8 @@ public class ContentService {
      * 게시물 리스트 전체 보기
      * @return
      */
-    public List<ContentResponse> findAllContent(Model model){
-        return contentMapper.findAllContent(model);
+    public List<ContentResponse> findAllContent(final SearchDTO params){
+        return contentMapper.findAllContent(params);
     }
 
 }

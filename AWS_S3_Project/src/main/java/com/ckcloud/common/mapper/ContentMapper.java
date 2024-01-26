@@ -2,6 +2,7 @@ package com.ckcloud.common.mapper;
 
 import com.ckcloud.common.domain.ContentRequest;
 import com.ckcloud.common.domain.ContentResponse;
+import com.ckcloud.common.dto.SearchDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.ui.Model;
 
@@ -40,11 +41,11 @@ public interface ContentMapper {
      * 게시글 리스트 조회
      * @return - 게시글 리스트
      */
-    List<ContentResponse> findAllContent(Model model);
+    List<ContentResponse> findAllContent(SearchDTO params);
 
     /**
      * 게시글 수 카운팅
      * @return 게시글 수
      */
-    int count();
+    int count(SearchDTO params);
 }

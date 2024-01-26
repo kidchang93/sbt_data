@@ -12,12 +12,15 @@ public class ContentServiceTest {
     ContentService contentService;
 
     @Test
-    void save(){
-        ContentRequest params = new ContentRequest();
-        params.setTitle("1번게시글 제목");
-        params.setDescription("1번게시글 내용");
-
-        int id = contentService.saveContent(params);
-        System.out.println("생성된 게시글 ID : " + id);
+    void saveByForeach(){
+        for (int i = 1; i <= 1000; i++) {
+            ContentRequest params = new ContentRequest();
+            params.setTitle(i + "번 게시글 제목");
+            params.setDescription(i + "번 게시글 내용");
+            params.setUserId(i);
+            params.setKeyword(i+"번째 키워드");
+            params.setView(1);
+            contentService.saveContent(params);
+        }
     }
 }

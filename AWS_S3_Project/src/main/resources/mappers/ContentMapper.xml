@@ -38,9 +38,17 @@
         )
     </insert>
     <!-- 게시글 리스트 조회 -->
-    <select id="findAllContent" resultType="com.ckcloud.common.domain.ContentResponse">
+    <select id="findAllContent" resultType="com.ckcloud.common.dto.SearchDTO">
         select <include refid="contentColumns" />
-            from tb_content order by regist_date desc
+            from tb_content
+            where delete_flag = 0
+            order by id desc
+        LIMIT #{offset} , #{recordSize}
+    </select>
+
+    <!--게시글 수 카운팅-->
+    <select id="count" parameterType="com.ckcloud.common.dto.SearchDTO" resultType="int">
+        select COUNT(*) From tb_content where delete_flag = 0
     </select>
 
     <!-- 게시글 상세정보 조회 -->
