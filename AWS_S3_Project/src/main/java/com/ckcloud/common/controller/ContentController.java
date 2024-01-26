@@ -59,4 +59,10 @@ public class ContentController {
         return "list";
     }
 
+    @GetMapping("/view")
+    public String openContentView(@RequestParam final int id , Model model){
+        ContentResponse contentResponse = contentService.findContentById(id);
+        model.addAttribute("content",contentResponse);
+        return "view";
+    }
 }

@@ -43,19 +43,19 @@
             <tr>
                 <th scope="col">번호</th>
                 <th scope="col">제목</th>
-                <th scope="col">키워드</th>
-                <th scope="col">등록일</th>
                 <th scope="col">내용</th>
+                <th scope="col">등록일</th>
+                <th scope="col">키워드</th>
             </tr>
         </thead>
         <tbody>
             <c:forEach items="${contentList}" var="content" varStatus="status">
                 <tr>
                     <td>${content.id}</td>
-                    <td>${content.title}</td>
-                    <td>${content.keyword}</td>
-                    <td>${content.registDate}</td>
+                    <td><a href="/content/view?id=${content.id}">${content.title}</a></td>
                     <td>${content.description}</td>
+                    <td>${content.registDate}</td>
+                    <td>${content.keyword}</td>
                 </tr>
             </c:forEach>
         </tbody>
@@ -70,7 +70,7 @@
     </div>
     <!--/* 버튼 */-->
     <p class="btn_set tr">
-        <a href="/post/write" class="btns btn_st3 btn_mid">글쓰기</a>
+        <a href="/content/write" class="btns btn_st3 btn_mid">글쓰기</a>
     </p>
 </body>
 </html>

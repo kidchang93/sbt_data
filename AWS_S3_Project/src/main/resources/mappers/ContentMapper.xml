@@ -39,11 +39,12 @@
     </insert>
     <!-- 게시글 리스트 조회 -->
     <select id="findAllContent" resultType="com.ckcloud.common.domain.ContentResponse">
-        select * from tb_content order by regist_date desc
+        select <include refid="contentColumns" />
+            from tb_content order by regist_date desc
     </select>
 
     <!-- 게시글 상세정보 조회 -->
-    <select id="findById" parameterType="long" resultType="com.ckcloud.common.domain.ContentResponse">
+    <select id="findById" parameterType="int" resultType="com.ckcloud.common.domain.ContentResponse">
         SELECT
         <include refid="contentColumns" />
         FROM
