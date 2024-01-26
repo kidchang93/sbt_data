@@ -26,9 +26,9 @@ public interface ContentMapper {
 
     /**
      * 게시글 수정
-     * @param params - 게시글 정보
+     * @param contentResponse - 게시글 정보
      */
-    void update (ContentRequest params);
+    void update (ContentResponse contentResponse);
 
     /**
      * 게시글 삭제

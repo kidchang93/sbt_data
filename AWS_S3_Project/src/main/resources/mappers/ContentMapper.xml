@@ -55,24 +55,23 @@
 
 
     <!-- 게시글 수정 -->
-    <update id="update" parameterType="com.ckcloud.common.domain.ContentRequest">
+    <update id="update" parameterType="com.ckcloud.common.domain.ContentResponse">
         UPDATE tb_content
-        SET
-            modified_date = NOW()
-          , title = #{title}
-          , content = #{content}
-          , writer = #{writer}
-          , notice_yn = #{noticeYn}
+        SET update_date = NOW(),
+            title = #{title},
+            description = #{description},
+            keyword = #{keyword}
         WHERE
             id = #{id}
     </update>
 
 
     <!-- 게시글 삭제 -->
-    <delete id="deleteById" parameterType="long">
+    <delete id="deleteById" parameterType="int">
         UPDATE tb_content
         SET
-            delete_yn = 1
+            delete_date = now(),
+            delete_flag = 1
         WHERE
             id = #{id}
     </delete>

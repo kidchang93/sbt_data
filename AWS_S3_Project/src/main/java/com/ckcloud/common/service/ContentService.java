@@ -4,6 +4,7 @@ import com.ckcloud.common.domain.ContentRequest;
 import com.ckcloud.common.domain.ContentResponse;
 import com.ckcloud.common.mapper.ContentMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ContentService {
 
     private final ContentMapper contentMapper;
@@ -39,13 +41,13 @@ public class ContentService {
 
     /**
      * 게시글 수정
-     * @param params - 게시글 정보
+     * @param contentResponse - 게시글 정보
      * @return PK
      */
-    @Transactional
-    public int updateContent(final ContentRequest params){
-        contentMapper.update(params);
-        return params.getId();
+    public void updateContent(ContentResponse contentResponse){
+        contentMapper.update(contentResponse);
+        log.info("=== contentResponse === "+contentResponse);
+
     }
 
     /**
@@ -53,9 +55,8 @@ public class ContentService {
      * @param id - PK
      * @return PK
      */
-    public int deleteContent(final int id){
+    public void deleteContent(final int id){
         contentMapper.deleteById(id);
-        return id;
     }
 
     /**

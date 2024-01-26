@@ -11,10 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.message.Message;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -66,4 +63,30 @@ public class ContentController {
         model.addAttribute("content",contentResponse);
         return "view";
     }
+
+    // 게시물 수정 화면 출력
+    @GetMapping("/update")
+    public String updateContent(@RequestParam("id") int id ,Model model){
+        log.info("업데이트 도착");
+        ContentResponse contentReponse = contentService.findContentById(id);
+        model.addAttribute("contents",contentReponse);
+        return "update";
+    }
+
+    // 게시물 수정 값 입력
+    @PostMapping("/update")
+    public String updateContentComplete(@ModelAttribute ContentResponse contentResponse){
+        log.info("업데이트 완료");
+        contentService.updateContent(contentResponse);
+        log.info("ID~!!!##$%^^@^==!!!!" +contentResponse.getId());
+        return "redirect:/content/list";
+    }
+
+    @PostMapping("/delete")
+    public String deleteContent(@RequestParam("id") int id) {
+        log.info("삭제 성공");
+        contentService.deleteContent(id);
+        return "redirect:/content/list";
+    }
+
 }

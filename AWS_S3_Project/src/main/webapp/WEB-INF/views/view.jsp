@@ -42,11 +42,31 @@
             </tbody>
         </table>
         <p class="btn_set">
-            <a href="/write?update=${content.id}" class="btns btn_bdr4 btn_mid">수정</a>
-            <button type="button" class="btns btn_bdr1 btn_mid">삭제</button>
+            <a href="/content/update?id=${content.id}" class="btns btn_bdr4 btn_mid">수정</a>
+            <button type="button" onclick="deleteContent();" class="btns btn_bdr1 btn_mid">삭제</button>
             <a href="/content/list" class="btns btn_bdr3 btn_mid">뒤로</a>
         </p>
     </section>
 </div> <!--/* .content */-->
 </body>
+<script>
+    // 게시글 삭제
+    function deleteContent() {
+        const id = [[ ${content.id} ]];
+
+        if ( !confirm(id + '번 게시글을 삭제할까요?') ) {
+            return false;
+        }
+
+        const formHtml = `
+                    <form id="deleteForm" action="/content/delete" method="post">
+                        <input type="hidden" id="id" name="id" value="${content.id}" />
+                    </form>
+                `;
+        const doc = new DOMParser().parseFromString(formHtml, 'text/html');
+        const form = doc.body.firstChild;
+        document.body.append(form);
+        document.getElementById('deleteForm').submit();
+    }
+</script>
 </html>

@@ -1,7 +1,6 @@
 package com.ckcloud.common.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Timestamp;
 @Getter
