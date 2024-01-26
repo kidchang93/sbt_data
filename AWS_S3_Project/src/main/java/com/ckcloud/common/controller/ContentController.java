@@ -59,6 +59,7 @@ public class ContentController {
         return "list";
     }
 
+    // 게시물 상세 정보 조회
     @GetMapping("/view")
     public String openContentView(@RequestParam final int id , Model model){
         ContentResponse contentResponse = contentService.findContentById(id);
