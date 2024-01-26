@@ -22,7 +22,7 @@ spring:
       max-request-size: 10MB
       location: E:\upload\temp\bootS3
   profiles:
-    include: s3 , db
+    include: db
   mvc:
     view:
       prefix: /WEB-INF/views/
