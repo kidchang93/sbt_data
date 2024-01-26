@@ -1,9 +1,6 @@
 package com.ckcloud.common.controller;
 
-import com.ckcloud.common.domain.ContentRequest;
-import com.ckcloud.common.domain.ContentResponse;
-import com.ckcloud.common.domain.FileRequest;
-import com.ckcloud.common.domain.MessageDTO;
+import com.ckcloud.common.domain.*;
 import com.ckcloud.common.dto.SearchDTO;
 import com.ckcloud.common.service.ContentService;
 import com.ckcloud.common.service.FileService;
@@ -53,7 +50,9 @@ public class ContentController {
     // 게시글 리스트 페이지
     @GetMapping("/list")
     public String openContentList(@ModelAttribute("params") final SearchDTO params, Model model){
-        List<ContentResponse> contents = contentService.findAllContent(params);
+        PagingResponse<ContentResponse> contents = contentService.findAllContent(params);
+        log.info("==== 제네릭 PagingResponse contents ===="+contents);
+        log.info("==== SEARCHDTO params 값 ===="+params);
         model.addAttribute("contentList",contents);
         return "list";
     }

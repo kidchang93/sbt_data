@@ -38,12 +38,12 @@
         )
     </insert>
     <!-- 게시글 리스트 조회 -->
-    <select id="findAllContent" resultType="com.ckcloud.common.dto.SearchDTO">
+    <select id="findAllContent" parameterType="com.ckcloud.common.dto.SearchDTO" resultType="com.ckcloud.common.domain.ContentResponse">
         select <include refid="contentColumns" />
             from tb_content
             where delete_flag = 0
             order by id desc
-        LIMIT #{offset} , #{recordSize}
+        LIMIT #{pagination.limitStart} , #{recordSize}
     </select>
 
     <!--게시글 수 카운팅-->

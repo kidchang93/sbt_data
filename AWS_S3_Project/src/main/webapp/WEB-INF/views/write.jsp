@@ -53,7 +53,7 @@
         initCreatedDate();
     }
     // 게시글 상세정보 렌더링
-    /*function renderPostInfo() {
+        /*function renderPostInfo() {
         const content = [[ ${content} ]];
 
         if ( !content ) {
@@ -63,7 +63,7 @@
 
         const form = document.getElementById('saveForm');
         const fields = ['id', 'title', 'content', 'keyword', 'description'];
-        /!*form.isNotice.checked = content.noticeYn;*!/
+        form.isNotice.checked = content.noticeYn;
         form.createdDate.value = dayjs(content.createdDate).format('YYYY-MM-DD HH:mm');
 
         fields.forEach(field => {

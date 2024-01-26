@@ -5,6 +5,7 @@ import lombok.*;
 import java.sql.Timestamp;
 @Getter
 @Setter
+@Data
 public class ContentResponse {
     private int id;
     private int userId;
