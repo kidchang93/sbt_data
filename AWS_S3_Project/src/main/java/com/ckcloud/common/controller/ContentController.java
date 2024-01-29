@@ -43,9 +43,9 @@ public class ContentController {
     @PostMapping("/save")
     public String save(final ContentRequest params, Model model){
         log.info("게시글 등록");
-        int id = contentService.saveContent(params);
-        /*List<FileRequest> files = fileUtils.uploadFiles(params.getFiles());
-        fileService.saveFiles(id,files);*/
+        int id = contentService.saveContent(params);    // 1. 게시글 Insert
+        List<FileRequest> files = fileUtils.uploadFiles(params.getFiles()); // 2. 디스크에 파일 업로드
+        fileService.saveFiles(id,files);    // 3. 업로드 된 파일 정보를 DB에 저장.
         MessageDTO message = new MessageDTO("게시글 생성이 완료되었습니다.", "list", RequestMethod.GET, null);
         return showMessageAndRedirect(message,model);
     }
@@ -60,14 +60,16 @@ public class ContentController {
         model.addAttribute("contentList",contents);
         return "list";
     }*/
+
+    // 타임리프로 할때 제이슨 값으로 받아지는건지 파악 안되서 뷰에 어떻게 뿌릴지 감이 안잡힘..
     @GetMapping("/list")
     public String openContentList(final SearchDTO params, Model model) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
 
         PagingResponse<ContentResponse> contents = contentService.findAllContent(params);
         log.info("==== 원래 Contents 값 ===="+contents);
-        /*String jsonContents = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(contents);
-        log.info("==== 제이슨 jsonContents 값 ===="+jsonContents);*/
+        String jsonContents = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(contents);
+        log.info("==== 제이슨 jsonContents 값 ===="+jsonContents);
 
         Pagination pagination = contents.getPagination();
         String jsonPagination = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(pagination);
@@ -79,7 +81,7 @@ public class ContentController {
         log.info("==== 제이슨 jsonPagination 값 ===="+jsonPagination);
 
 
-        log.info("==== params 값 ===="+params);
+        log.info("==== 제이슨 params 값 ===="+jsonParams);
 
         model.addAttribute("contentList",contents);
         return "list";

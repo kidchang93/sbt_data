@@ -85,6 +85,5 @@
         }
         element.parentElement.remove();
     }
-    출처: https://congsong.tistory.com/39#2.-파일-테이블-생성하기 [Let's develop:티스토리]
 </script>
 </html>

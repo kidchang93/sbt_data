@@ -51,23 +51,18 @@
                     </tr>
                 </thead>
                     <tbody>
-                    <%--<input type="hidden" name="contentList" value="${contentList}">--%>
-                    <%--<c:forEach items="${contentList}" var="content">
-                    </c:forEach>--%>
-                        <div class="list">
+                    <%--<input type="hidden" name="contentList" value="${contentList}">
+                    <c:forEach items="${contentList}" var="content"></c:forEach>--%>
+                        <tr>
+                            <div class="list">
+                            <%--<td>${content.id}</td>
+                            <td><a href="/content/view?id=${content.id}">${content.title}</a></td>
+                            <td>${content.description}</td>
+                            <td>${content.registDate}</td>
+                            <td>${content.keyword}</td>--%>
+                            </div>
+                        </tr>
 
-
-
-                                            <%-- 자바 스크립트 리스트 영역--%>
-
-                                    <%--<td>${content.id}</td>
-                                    <td><a href="/content/view?id=${content.id}">${content.title}</a></td>
-                                    <td>${content.description}</td>
-                                    <td>${content.registDate}</td>
-                                    <td>${content.keyword}</td>--%>
-
-
-                        </div>
                     </tbody>
             </c:otherwise>
     </c:choose>
@@ -106,11 +101,11 @@
         }
 
         // 3. PagingResponse의 멤버인 pagination을 의미
-        const pagination = ${getPagination};
+        const pagination = ${contentList.pagination};
         console.log(pagination);
 
         // 4. @ModelAttribute를 이용해서 뷰(HTML)로 전달한 SearchDto 타입의 객체인 params를 의미
-        const params = ${params};
+        const params = [${params}];
         console.log(params);
 
         // 5. 리스트에 출력되는 게시글 번호를 처리하기 위해 사용되는 변수 (리스트에서 번호는 페이지 정보를 이용해서 계산해야 함)
@@ -136,12 +131,12 @@
          *  <td></td>
          */
 
-        list.forEach(row => {
+        list.forEach(content => {
             html += `<tr>
-                        <td class="tl"><a href="/content/view?id=${row.id}">${row.title}</a></td>
-                        <td>${row.userId}</td>
-                        <td>${row.registDate}</td>
-                        <td>${row.view}</td>
+                        <td class="tl"><a href="/content/view?id=${content.id}">${content.title}</a></td>
+                        <td>${content.userId}</td>
+                        <td>${content.registDate}</td>
+                        <td>${content.view}</td>
                     </tr>`
         });
 
