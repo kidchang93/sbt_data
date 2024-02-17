@@ -37,12 +37,19 @@ public interface CommentMapper {
      * @param postId - 게시글 번호 (FK)
      * @return 댓글 리스트
      */
-    List<CommentResponse> findAll(Long postId);
+    /*List<CommentResponse> findAll(Long postId);*/
+
+    /**
+     * 댓글 리스트 페이징을 위한 수정된 조회
+     * @param params
+     * @return
+     */
+    List<CommentResponse> findAll(CommentSearchDto params);
 
     /**
      * 댓글 수 카운팅
-     * @param postId - 게시글 번호 (FK)
-     * @return 댓글 수
+     * @param params
+     * @return
      */
-    int count(Long postId);
+    int count(CommentSearchDto params);
 }
