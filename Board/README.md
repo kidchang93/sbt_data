@@ -98,42 +98,53 @@
 ### [ 메인 페이지 리스트 ]
 - 메인 페이지 레이아웃과 리스트 출력
 <br>
+![(타임리프)메인페이지리스트](https://github.com/kidchang93/sbt_data/assets/145524731/a04a83f2-1e2c-41ee-b5f1-6370cbc53cb9)
 
 ### [ 게시글 작성 ]
 - 메인 페이지 레이아웃과 리스트 출력
   <br>
+![(타임리프)게시글작성](https://github.com/kidchang93/sbt_data/assets/145524731/26e50776-6b3a-47e8-b4a0-db96bff2ebc2)
 
 ### [ 게시글 상세보기 ]
 - 메인 페이지 레이아웃과 리스트 출력
   <br>
+![(타임리프)게시글상세보기](https://github.com/kidchang93/sbt_data/assets/145524731/0abb6c75-71e8-4b6a-90a5-170cd0131c29)
 
 ### [ 게시글 수정 ]
 - 메인 페이지 레이아웃과 리스트 출력
   <br>
+![(타임리프)게시글수정](https://github.com/kidchang93/sbt_data/assets/145524731/6df7c972-0ee7-4df2-a8c7-b36a0c52162f)
+![(타임리프)게시글수정1](https://github.com/kidchang93/sbt_data/assets/145524731/1e8a1ecf-c0c9-4b12-8f55-f978758de064)
 
 ### [ 댓글 작성 ]
 - 메인 페이지 레이아웃과 리스트 출력
   <br>
+![(타임리프)댓글작성](https://github.com/kidchang93/sbt_data/assets/145524731/08569593-43a4-4384-a1d6-5d6b8c10c05e)
 
 ### [ 댓글 수정 ]
 - 메인 페이지 레이아웃과 리스트 출력
   <br>
+![(타임리프)댓글수정](https://github.com/kidchang93/sbt_data/assets/145524731/19bd7da2-5724-49e0-ba5f-52a9ff6ebf1a)
 
 ### [ 댓글 RestApi 적용 ]
 - 메인 페이지 레이아웃과 리스트 출력
   <br>
+![(타임리프)댓글RESTAPI방식적용](https://github.com/kidchang93/sbt_data/assets/145524731/76c153b2-ea6c-4cf7-8fce-d08c1722df89)
 
 ### [ 공통 Ajax 함수 분리 ]
 - 메인 페이지 레이아웃과 리스트 출력
   <br>
+![(타임리프)공통Ajax함수분리](https://github.com/kidchang93/sbt_data/assets/145524731/a5a3f649-d67b-496b-bfa1-e272dba3bcc1)
 
 ### [ ajax 새로고침 문제 해결 ]
 - 메인 페이지 레이아웃과 리스트 출력
   <br>
+![(타임리프)ajax새로고침문제해결](https://github.com/kidchang93/sbt_data/assets/145524731/d0b8b111-2535-44fd-9d28-b8f69d92959b)
 
 ### [ 새로고침시 댓글 페이지 번호 유지 ]
 - 메인 페이지 레이아웃과 리스트 출력
   <br>
+![(타임리프)새로고침시댓글페이지번호유지](https://github.com/kidchang93/sbt_data/assets/145524731/5375eb99-bf4d-40ba-a40d-3a76599eedbe)
 
 
 
