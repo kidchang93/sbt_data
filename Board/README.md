@@ -1,5 +1,6 @@
 # 💻 ThymeLeaf * SpringBoot 게시판 프로젝트
-아직 작업중입니다.
+
+#### I am continuing to develop this project.
 
 ### INDEX
 - [프로젝트 소개](#프로젝트-소개)
