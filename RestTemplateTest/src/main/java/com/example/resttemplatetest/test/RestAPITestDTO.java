@@ -7,16 +7,21 @@ import java.util.List;
 import java.util.Map;
 
 
-@Builder
+@Getter
 public class RestAPITestDTO {
 
-    private long subject;
-    private long large;
-    private long medium;
-    private long small;
-    private long topic ;
-    private String levelCnt;
+    private List<MinorClassification> minorClassification;
+    private List<String> levelCnt;
     private String questionForm;
-    private long[] activityCategoryList;
+    private List<Long> activityCategoryList;
+
+    @Builder
+    private static class MinorClassification {
+        private Long subject;
+        private Long large;
+        private Long medium;
+        private Long small;
+        private Long topic;
+    }
 
 }

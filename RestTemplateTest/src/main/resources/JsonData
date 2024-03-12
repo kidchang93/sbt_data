@@ -35,3 +35,33 @@
     "questionForm": "multiple,subjective",
     "activityCategoryList": [395, 397]
 }
+
+
+-----
+
+{
+    "successYn": "Y",
+    "itemList": [
+        {
+            "itemNo": "1",
+            "itemId": "476715",
+            "questionFormCode": "50",
+            "questionFormName": "5지 선택",
+            "difficultyCode": "L2",
+            "difficultyName": "하",
+            "largeChapterId": "113601",
+            "largeChapterName": "Ⅰ. 소인수분해",
+            "mediumChapterId": "11360101",
+            "mediumChapterName": "1. 소수와 합성수",
+            "smallChapterId": "1136010101",
+            "smallChapterName": "1. 소수와 합성수",
+            "topicChapterId": "113601010101",
+            "topicChapterName": "거듭제곱으로 표현",
+            "passageId": 24116,
+             "passageUrl": "https://itemfactory-bucket.s3.ap-northeast-2.amazonaws.com/upload/capture/tsherpa/passage/24116/24116.svg",
+            "questionUrl": "https://itemfactory-bucket.s3.ap-northeast-2.amazonaws.com/upload/capture/tsherpa/question/493138/493138.svg",
+            "answerUrl": "https://itemfactory-bucket.s3.ap-northeast-2.amazonaws.com/upload/capture/tsherpa/answer/493138/493138.svg",
+            "explainUrl": "https://itemfactory-bucket.s3.ap-northeast-2.amazonaws.com/upload/capture/tsherpa/explain/493138/493138.svg"
+        }
+    ]
+}
