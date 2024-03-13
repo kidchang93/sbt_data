@@ -12,8 +12,9 @@
 </head>
 <body>
 <h1>Hello</h1>
-<%--<form action="/testPost" method="post">--%>
-<%--    <input type="button"> 전송하기--%>
-<%--</form>--%>
+<form action="/postResponse" method="post">
+    <input type="text" name="subject">
+
+</form>
 </body>
 </html>

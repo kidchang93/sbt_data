@@ -1,13 +1,17 @@
 package com.example.resttemplatetest.test;
 
+
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
-import java.util.Map;
+
 
 
 @Getter
+@Setter
+
 public class RestAPITestDTO {
 
     private List<MinorClassification> minorClassification;
