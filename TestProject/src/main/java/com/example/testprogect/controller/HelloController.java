@@ -37,7 +37,7 @@ public class HelloController {
         throw new Exception();
     }
 
-    @ExceptionHandler(value = Exception.class)
+/*    @ExceptionHandler(value = Exception.class)
     public ResponseEntity<Map<String , String>> ExceptionHandler(Exception e){
         HttpHeaders responseHeaders = new HttpHeaders();
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
@@ -51,5 +51,5 @@ public class HelloController {
         map.put("message", "에러 발생");
 
         return new ResponseEntity<>(map, responseHeaders, httpStatus);
-    }
+    }*/
 }
