@@ -31,4 +31,16 @@ public class CKHubExceptionHandler {
 
         return new ResponseEntity<>(map, responseHeaders, httpStatus);
     }
+
+    @ExceptionHandler(value = CKHubException.class)
+    public ResponseEntity<Map<String, String>> ExceptionHandler(CKHubException e){
+        HttpHeaders responseHeaders = new HttpHeaders();
+
+        Map<String, String> map = new HashMap<>();
+        map.put("error type", e.getHttpStatusType());
+        map.put("error code", Integer.toString(e.getHttpStatusCode())); // Map<String,Object> 로 잡아줬으면 이렇게 불필요한 작업은 안해도 된다.
+        map.put("message", e.getMessage());
+
+        return new ResponseEntity<>(map,responseHeaders,e.getHttpStatus());
+    }
 }
