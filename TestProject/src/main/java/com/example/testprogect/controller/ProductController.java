@@ -43,6 +43,14 @@ public class ProductController {
     @PostMapping(value = "/product")
     public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO){
 
+        // 애너테이션 없이 하드코딩을 사용한 데이터 검증 방식
+        // if (productDTO.getProductId().equals("") || productDTO.getProductId().isEmpty()){
+        //    LOGGER.error("[createProduct] failed Response :: productId is Empty");
+        //    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(productDTO);
+        // }
+        // 위 방법은 가독성도 떨어지고 데이터 검증이 필요한 메서드에는 항상 추가가 되어야 하므로
+        // 올바르지 않다. 가급적이면 애너테이션으로 끝낼 수 있는 코드면 애너테이션으로만 하는게 좋다.
+
         String productId = productDTO.getProductId();
         String productName = productDTO.getProductName();
         int productPrice = productDTO.getProductPrice();
