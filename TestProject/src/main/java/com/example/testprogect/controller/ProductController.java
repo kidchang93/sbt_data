@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/product-api")
 public class ProductController {
@@ -39,7 +41,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product")
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO){
+    public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO){
 
         String productId = productDTO.getProductId();
         String productName = productDTO.getProductName();
