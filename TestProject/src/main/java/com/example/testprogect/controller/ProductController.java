@@ -1,5 +1,7 @@
 package com.example.testprogect.controller;
 
+import com.example.testprogect.common.Constants;
+import com.example.testprogect.common.exception.CKHubException;
 import com.example.testprogect.data.dto.ProductDTO;
 import com.example.testprogect.service.ProductService;
 import org.slf4j.Logger;
@@ -70,5 +72,11 @@ public class ProductController {
     @DeleteMapping(value = "/product/{productId}")
     public ProductDTO deleteProduct(@PathVariable String productId){
         return null;
+    }
+
+    @PostMapping(value = "/product/exception")
+    public void exceptionTest() throws CKHubException {
+        throw new CKHubException(Constants.ExceptionClass.PRODUCT , HttpStatus.BAD_REQUEST, "의도한 에러가 발생하였습니다."  );
+
     }
 }

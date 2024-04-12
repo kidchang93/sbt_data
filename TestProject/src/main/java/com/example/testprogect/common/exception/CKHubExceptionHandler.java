@@ -1,4 +1,4 @@
-package com.example.testprogect.exception;
+package com.example.testprogect.common.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
