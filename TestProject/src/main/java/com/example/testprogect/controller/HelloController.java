@@ -45,7 +45,7 @@ public class HelloController {
         LOGGER.info(e.getLocalizedMessage());
         LOGGER.info("Controller 내 ExceptionHandler 호출");
 
-        Map<String , String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         map.put("error type", httpStatus.getReasonPhrase());
         map.put("code", "400");
         map.put("message", "에러 발생");
