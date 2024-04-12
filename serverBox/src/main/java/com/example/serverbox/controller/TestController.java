@@ -38,8 +38,11 @@ public class TestController {
                                                @RequestParam String organization){
         LOGGER.info("getMember 호출");
         MemberDTO memberDTO1 = new MemberDTO();
+        memberDTO1.setName(name);
+        memberDTO1.setEmail(email);
+        memberDTO1.setOrganization(organization);
 
-        return ResponseEntity.status(HttpStatus.OK).body(memberDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(memberDTO1);
     }
 
     @PostMapping(value = "/add-header")

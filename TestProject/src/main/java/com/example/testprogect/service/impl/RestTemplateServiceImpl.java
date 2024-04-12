@@ -90,6 +90,8 @@ public class RestTemplateServiceImpl implements RestTemplateService {
         memberDTO.setEmail("ckHub@ckmail.com");
         memberDTO.setOrganization("CK Hub Studio!!");
 
+        // queryParam , memberDTO 의 값은 serverBox 에서 어떤 값을 body에 넣어주냐에 따라 다르게 나옴
+
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<MemberDTO> responseEntity =
                 restTemplate.postForEntity(uri, memberDTO, MemberDTO.class);
