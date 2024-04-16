@@ -48,7 +48,7 @@ public class ProductControllerTest {
 
         // andExpect : 기대하는 값이 나왔는지 체크해볼 수 있는 메서드
         mockMvc
-                .perform(get("/api/v1/product-api/product" + productId))
+                .perform(get("/api/v1/product-api/product/" + productId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").exists()) // jsonPath의 depth가 깊어지면 .을 추가하여 탐색할 수 있음 (ex : $.productId.productIdName)
                 .andExpect(jsonPath("$.productName").exists())
@@ -60,6 +60,7 @@ public class ProductControllerTest {
         verify(productService).getProduct("12315");
     }
 
+    // http://localhost:8080/api/v1/product-api/product
     @Test
     @DisplayName("Product 데이터 생성 테스트")
     void createProductTest() throws Exception {
@@ -83,7 +84,7 @@ public class ProductControllerTest {
         // String json = new ObjectMapper().writeValueAsString(productDTO);
 
         mockMvc
-                .perform(post("/api/v1/product-api/product")
+                .perform(post("/api/v1/product-api/product/")
                         .content(content)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
