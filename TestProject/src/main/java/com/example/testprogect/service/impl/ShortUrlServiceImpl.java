@@ -34,10 +34,26 @@ public class ShortUrlServiceImpl implements ShortUrlService {
     @Override
     public ShortUrlResponseDTO getShortUrl(String clientId, String clientSecret, String originalUrl) {
         LOGGER.info("[getShortUrl] request data : {}", originalUrl);
+        ShortUrlEntity getShortUrlEntity = shortUrlDAO.getShortUrl(originalUrl);
 
-        // Cache Logic
+        String orgUrl;
+        String shortUrl;
 
-        return null;
+        if (getShortUrlEntity == null){
+            LOGGER.info("[getShortUrl] No Entity in DataBase.");
+            ResponseEntity<NaverUriDTO> responseEntity = requestShortUrl(clientId,clientSecret,originalUrl);
+
+            orgUrl = responseEntity.getBody().getResult().getOrgUrl();
+            shortUrl = responseEntity.getBody().getResult().getUrl();
+        } else {
+            orgUrl = getShortUrlEntity.getOrgUrl();
+            shortUrl = getShortUrlEntity.getUrl();
+        }
+
+        ShortUrlResponseDTO shortUrlResponseDTO = new ShortUrlResponseDTO(orgUrl,shortUrl);
+
+        LOGGER.info("[getShortUrl] Response DTO : {}", shortUrlResponseDTO.toString());
+        return shortUrlResponseDTO;
     }
 
     @Override
