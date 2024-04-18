@@ -1,7 +1,7 @@
 package com.example.testprogect.data.entity;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.*;
 

@@ -22,6 +22,7 @@ public class ShortUrlController {
     @Value("${ck.hub.short.url.secret}")
     private String CLIENT_SECRET;
 
+
     ShortUrlService shortUrlService;
 
     @Autowired

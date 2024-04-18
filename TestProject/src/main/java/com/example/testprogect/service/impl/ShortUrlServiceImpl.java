@@ -4,7 +4,7 @@ import com.example.testprogect.data.dao.ShortUrlDAO;
 import com.example.testprogect.data.dto.NaverUriDTO;
 import com.example.testprogect.data.dto.ShortUrlResponseDTO;
 import com.example.testprogect.data.entity.ShortUrlEntity;
-import com.example.testprogect.data.repository.ShortUrlRedisRepository;
+
 import com.example.testprogect.service.ShortUrlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +22,11 @@ public class ShortUrlServiceImpl implements ShortUrlService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(ShortUrlServiceImpl.class);
     private ShortUrlDAO shortUrlDAO;
-    private ShortUrlRedisRepository shortUrlRedisRepository;
+
 
     @Autowired
-    public ShortUrlServiceImpl(ShortUrlDAO shortUrlDAO, ShortUrlRedisRepository shortUrlRedisRepository){
+    public ShortUrlServiceImpl(ShortUrlDAO shortUrlDAO){
         this.shortUrlDAO = shortUrlDAO;
-        this.shortUrlRedisRepository = shortUrlRedisRepository;
     }
 
 

@@ -14,11 +14,3 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
-
-## Custom Property
-ck:
-  hub:
-    short:
-      url:
-        id: ${ck.hub.short.url.id}
-        secret: ${ck.hub.short.url.secret}
