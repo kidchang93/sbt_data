@@ -10,9 +10,9 @@ import org.springframework.data.annotation.Id;
 @Builder
 public class ShortUrlResponseDTO {
 
-    private static final long serialVersionUID = -214490344996507077L;
+    // private static final long serialVersionUID = -214490344996507077L;
 
-    @Id
+    // @Id
     private String orgUrl;
 
     private String shortUrl;

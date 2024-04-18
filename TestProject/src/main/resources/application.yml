@@ -20,5 +20,5 @@ ck:
   hub:
     short:
       url:
-        id:
-        secret:
+        id: ${ck.hub.short.url.id}
+        secret: ${ck.hub.short.url.secret}
