@@ -18,10 +18,10 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
-    @CreatedDate
+    @CreatedDate        // 엔티티가 저장되는 시점에 자동으로 시간을 주입
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
-    @LastModifiedDate
+    @LastModifiedDate   // 엔티티가 수정되는 시점에 자동으로 시간을 주입 (주체를 주입할때는 LastModifiedBy 애너테이션)
     private LocalDateTime updatedAt;
 }
