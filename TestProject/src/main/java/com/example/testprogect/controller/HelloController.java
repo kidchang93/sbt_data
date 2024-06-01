@@ -28,7 +28,7 @@ public class HelloController {
         LOGGER.debug("Debug Log");
         LOGGER.info("Info Log");
         LOGGER.warn("Warn Log");
-        LOGGER.error("Error Log");
+        LOGGER.error("ErrorLog");
 
     }
 
